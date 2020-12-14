@@ -15,7 +15,6 @@ export async function getServerSideProps() {
 }
 
 export default function Cool(props) {
-  console.log(props);
   return (
     <div className="container">
       <Head>
@@ -28,8 +27,8 @@ export default function Cool(props) {
         <p className="description">Things that came from SSR:</p>
 
         <ul>
-          {props.theData.cards.map((card) => (
-            <li>{card.name}</li>
+          {props.theData.cards.map((card, index) => (
+            <li key={index}>{card.name}</li>
           ))}
         </ul>
 
