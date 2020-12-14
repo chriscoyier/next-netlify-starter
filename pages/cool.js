@@ -1,13 +1,12 @@
 import Head from "next/head";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import Link from "next/link";
 
 export async function getServerSideProps() {
   return { props: { foo: "bar" } };
 }
 
-export default function Home() {
+export default function Cool() {
   return (
     <div className="container">
       <Head>
@@ -16,11 +15,10 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header title="Welcome to my app!" />
+        <Header title="Coooool" />
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
-        <Link href="/cool">Cool page</Link>
       </main>
 
       <Footer />
