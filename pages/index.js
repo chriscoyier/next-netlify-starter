@@ -4,10 +4,18 @@ import Footer from "@components/Footer";
 import Link from "next/link";
 
 export async function getServerSideProps() {
-  return { props: { foo: "bar" } };
+  let theData;
+  await fetch("https://assets.codepen.io/3/cards-data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      theData = data;
+    });
+
+  return { props: { theData } };
 }
 
-export default function Home() {
+export default function Home(props) {
+  console.log(props);
   return (
     <div className="container">
       <Head>
