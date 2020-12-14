@@ -1,12 +1,21 @@
 import Head from "next/head";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
+import Link from "next/link";
 
 export async function getServerSideProps() {
-  return { props: { foo: "bar" } };
+  let theData;
+  await fetch("https://assets.codepen.io/3/cards-data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      theData = data;
+    });
+
+  return { props: { theData } };
 }
 
-export default function Cool() {
+export default function Cool(props) {
+  console.log(props);
   return (
     <div className="container">
       <Head>
@@ -16,9 +25,15 @@ export default function Cool() {
 
       <main>
         <Header title="Coooool" />
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
+        <p className="description">Things that came from SSR:</p>
+
+        <ul>
+          {props.theData.cards.map((card) => (
+            <li>{card.name}</li>
+          ))}
+        </ul>
+
+        <Link href="/">Back Home</Link>
       </main>
 
       <Footer />

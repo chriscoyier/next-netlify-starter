@@ -3,19 +3,7 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Link from "next/link";
 
-export async function getServerSideProps() {
-  let theData;
-  await fetch("https://assets.codepen.io/3/cards-data.json")
-    .then((response) => response.json())
-    .then((data) => {
-      theData = data;
-    });
-
-  return { props: { theData } };
-}
-
-export default function Home(props) {
-  console.log(props);
+export default function Home() {
   return (
     <div className="container">
       <Head>
@@ -28,7 +16,7 @@ export default function Home(props) {
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
-        <Link href="/cool">Cool page</Link>
+        <Link href="/cool">Link to SSR Page</Link>
       </main>
 
       <Footer />
